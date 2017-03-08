@@ -9,10 +9,15 @@ for p in params_list_l:
 for p in params_list_g:
     gazelles.append(Gacel(p))
 
-medium = Envorinment(__args__)
+env = Envorinment(__args__)
 
 t = 0
 T = 100
 while t < T:
-    medium.
+    env.map_positions (lions, gazelles)
+    for lion in lions:
+        lion.attack()
+        lion.move()
+    for gaz in gazelles:
+        
 

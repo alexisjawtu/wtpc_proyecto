@@ -6,6 +6,12 @@ Class Animal (Object):
         self.hunger = hunger
         self.alive = alive
 
+    def set_position (self, pos):
+        self.position = pos
+
+    def get_position (self):
+        pass
+
     def move (self):
         pass
 

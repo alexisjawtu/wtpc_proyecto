@@ -6,4 +6,4 @@ Class Environment(Object):
         
 
     def map_positions (self, lions, gazelles):
-
+        pass
