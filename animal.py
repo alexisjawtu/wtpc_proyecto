@@ -18,4 +18,3 @@ Class Animal (Object):
     def eat ():
         pass
 
-#Borrar si anda el push!
