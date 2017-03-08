@@ -1,4 +1,4 @@
-Class Animal (Object):
+class Animal (Object):
     
     def __init__ (self, position, step, hunger, alive):
         self.position = position
@@ -10,7 +10,7 @@ Class Animal (Object):
         self.position = pos
 
     def get_position (self):
-        pass
+        return self.position
 
     def move (self):
         pass

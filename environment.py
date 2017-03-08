@@ -1,6 +1,6 @@
 import numpy as np
 
-Class Environment(Object):
+class Environment(Object):
     """ size is an np.array[2] """
     def __init__ (self, size):
         

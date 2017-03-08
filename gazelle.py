@@ -1,2 +1,2 @@
-Class Gazelle (Animal):
+class Gazelle (Animal):
     
