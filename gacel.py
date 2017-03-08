@@ -1,0 +1,2 @@
+Class Gacel (Animal):
+    pass

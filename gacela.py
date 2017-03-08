@@ -1,2 +1,0 @@
-Class Gacela (Animal):
-    pass
