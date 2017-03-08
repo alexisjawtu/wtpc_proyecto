@@ -9,4 +9,5 @@ Class Animal (Object):
     def move (self):
         pass
 
-        
+    def eat ():
+        pass
