@@ -19,9 +19,27 @@ class Animal (object):
     def get_position (self):
         return self.position
 
+    def set_step (self, step):
+        self.step = step
+
+    def get_step (self):
+        return self.step
+
+    def set_hunger (self, hunger):
+        self.hunger = hunger
+
+    def get_hunger (self):
+        return self.hunger
+
+    def set_alive (self, alive):
+        self.alive = alive
+
+    def get_alive (self):
+        return self.alive
+
     def move (self, n_random, direction):
         """ direction == [1,0], [0,1], [-1,0], [0,-1] """
         self.position += self.step*n_random*direction
 
-    def eat (self):
-        pass        
+    def eat (self, food):
+        self.hunger = min (self.hunger - food, 0)        

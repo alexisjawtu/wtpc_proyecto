@@ -5,8 +5,14 @@ class Lion (Animal):
     
     def __init__ (self, position, radius, attack_prob, \
         targets = np.array([], dtype = int), alive = True):
+        """ attack_prob must be a uniform random number in (.5,1)
+            target is an 1D np.array. To operate, consider proper transposings
+            after concatenation.
+
+            radius == the radius of the attack region of the Lion
+
+         """
         Animal.__init__ (self, position, 2, 80, alive)
-        """ attack_prob must be a uniform random number in (.5,1) """
         self.radius      = radius
         self.attack_prob = attack_prob
         self.targets     = targets
@@ -30,16 +36,16 @@ class Lion (Animal):
         return self.targets
 
     def add_target (self, index):
-        self.set_targets(np.concatenate((self.get_targets(), [index])))
+        self.targets = np.concatenate((self.targets, [index]))
 
     def attack (self, g):
         """ takes the gazelle and kills and occupies its position
             according to the attack_prob """
         p = np.random.random()
         if (attack_prob > p):
-            self.set_position (g.position)
+            self.set_position(g.position)
             # TODO: something with the mass of the gazelle?
             # g.mass == 25
-            self.hunger     = min(self.hunger - 25, 0) 
-            g.alive         = False
+            self.eat(25) 
+            g.alive = False
         return
