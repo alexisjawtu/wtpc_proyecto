@@ -38,8 +38,6 @@ for p in range(num_gazelle):
 	PosGaz = np.array([np.random.randint(width),np.random.randint(height)])
 	gazelles.append(Gazelle(PosGaz))
 
-
-
 def random_direction():
     dire = np.array([[1,0],[0,1],[-1,0],[0,-1]])
     return dire[np.random.randint(4)]
@@ -49,7 +47,6 @@ f_name = 'log.txt'
 
 t = 0
 T = 10
-
 
 with open (f_name, "w") as out:
     while t < T:
@@ -73,5 +70,4 @@ with open (f_name, "w") as out:
         np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
         np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
         out.write("\n")
-        
         
