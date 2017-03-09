@@ -17,8 +17,6 @@ class Environment(object):
         
         self.gazelle_COM = np.floor(np.average(vec_pos,axis=0))
          
-        
-
     def map_positions (self, lions, gazelles):
         area = []
         for l in lions:
