@@ -31,13 +31,13 @@ hungerGaz = 0
 lions = []
 gazelles = []
 for p in range(num_lion):
-	PosL = [random.randrange(width),random.randrange(height)]
+	PosL = np.array([random.randrange(width),random.randrange(height)])
 	lion = Lion(PosL, stepLion, hungerLion, True, radLion, probAt)
 	lions.append(lion)
 
 for p in range(num_gazzelle):
-	x = [random.randrange(width),random.randrange(height)]
-	gaz = Gazelle(x, stepGazzelle, hungerGaz, True)
+	PosGaz = np.array([random.randrange(width),random.randrange(height)])
+	gaz = Gazelle(PosGaz, stepGazzelle, hungerGaz, True)
 	gazelles.append(gaz)
 
 
