@@ -3,7 +3,8 @@ from animal import *
 
 class Lion (Animal):
     
-    def __init__ (self, position, radius, attack_prob, targets = np.array([], dtype = int), alive = True):
+    def __init__ (self, position, radius, attack_prob, \
+        targets = np.array([], dtype = int), alive = True):
         Animal.__init__ (self, position, 2, 80, alive)
         """ attack_prob must be a uniform random number in (.5,1) """
         self.radius      = radius
