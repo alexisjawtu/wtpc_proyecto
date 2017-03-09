@@ -38,9 +38,9 @@ for p in range(num_gazelle):
 	PosGaz = np.array([np.random.randint(width),np.random.randint(height)])
 	gazelles.append(Gazelle(PosGaz))
 
-def random_direction():
-    dire = np.array([[1,0],[0,1],[-1,0],[0,-1]])
-    return dire[np.random.randint(4)]
+#def random_direction():
+#    dire = np.array([[1,0],[0,1],[-1,0],[0,-1]])
+#    return dire[np.random.randint(4)]
 
 #Time Loop
 f_name = 'log.txt'
@@ -59,10 +59,10 @@ with open (f_name, "w") as out:
             list_target = lion.get_targets()
             for target in list_target:
                 lion.attack(gazelles[target])
-            lion.move_rnd(1, random_direction(), env.get_width(), env.get_height())
+            lion.move_rnd(1, np.random.randint(4), env.get_width(), env.get_height())
             lions_out[k] = np.concatenate((np.array([1,k]),lion.get_position())) 
         for j,gaz in enumerate(gazelles):
-            gaz.move_rnd(1, random_direction(), env.get_width(), env.get_height())
+            gaz.move_rnd(1, np.random.randint(4), env.get_width(), env.get_height())
             if gaz.get_alive():
                 gaz_out.append([0,j]+gaz.get_position().tolist())
         
