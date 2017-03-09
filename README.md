@@ -10,3 +10,6 @@ Cuatro columnas:
 + Una para el ID del individuo.
 + Una para la posicion X.
 + Una para la posicion Y.
+
+## read this
+http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/
