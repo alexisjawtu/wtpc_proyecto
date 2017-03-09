@@ -1,8 +1,11 @@
 import numpy as np
+from animal import *
 
 class Lion (Animal):
-
-    def __init__ (self, radius, attack_prob, targets = np.array([], dtype = int)):
+    
+    def __init__ (self, position, radius, attack_prob, targets = np.array([], dtype = int), alive = True):
+        Animal.__init__ (self, position, 2, 80, alive)
+        """ attack_prob must be a uniform random number in (.5,1) """
         self.radius      = radius
         self.attack_prob = attack_prob
         self.targets     = targets
@@ -26,11 +29,16 @@ class Lion (Animal):
         return self.targets
 
     def add_target (self, index):
-        self.targets = np.concatenate((self.targets, [index]))
+        self.set_targets(np.concatenate((self.get_targets(), [index])))
 
-    def attack (self, g_index):
-        """ takes the gazelle index and kills and occupies its position
+    def attack (self, g):
+        """ takes the gazelle and kills and occupies its position
             according to the attack_prob """
-        if (probability test):
-            pass
- 
+        p = np.random.random()
+        if (attack_prob > p):
+            self.set_position (g.position)
+            # TODO: something with the mass of the gazelle?
+            # g.mass == 25
+            self.hunger     = min(self.hunger - 25, 0) 
+            g.alive         = False
+        return
