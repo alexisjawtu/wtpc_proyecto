@@ -49,3 +49,4 @@ class Lion (Animal):
             self.eat(25) 
             g.alive = False
         return
+    

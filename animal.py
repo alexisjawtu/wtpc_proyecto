@@ -37,8 +37,16 @@ class Animal (object):
     def get_alive (self):
         return self.alive
 
-    def move (self, n_random, direction):
-        """ direction == [1,0], [0,1], [-1,0], [0,-1] """
+    def move (self, n, direction, env_w, env_h):
+        """ direction == [1,0], [0,1], [-1,0], [0,-1] 
+            TODO: si sobra rebota con tamano de environmen
+        """
+        self.position += self.step*n*direction
+        
+    def move_rnd (self, n_random, direction, env_w, env_h):
+        """ direction == [1,0], [0,1], [-1,0], [0,-1] 
+            TODO: si sobra rebota con tamano de environment
+        """
         self.position += self.step*n_random*direction
 
     def eat (self, food):
