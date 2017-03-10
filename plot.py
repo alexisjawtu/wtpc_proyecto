@@ -30,9 +30,9 @@ def plot_frame(x0, y0, x1, y1):
 
 			for i in range(N):
 				if spc_id[i] == 0: #If species is gazelle.
-					pp.plot(x_pos[i], y_pos[i], 'b^') #Blue for gazelles.
+					pp.scatter(x_pos[i], y_pos[i]) #Blue for gazelles.
 				else:
-					pp.plot(x_pos[i], y_pos[i], 'r*') #Red for lions.
+					pp.scatter(x_pos[i], y_pos[i], color = 'red') #Red for lions.
 
 			#Defines the file name for the frame and saves it.
 			fig_name = "plot%d.jpg" % fig
