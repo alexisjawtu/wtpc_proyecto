@@ -39,10 +39,22 @@ class Animal (object):
         return self.alive
 
     def move (self, n, direc, env_w, env_h):
-        """ direction == [1,0], [0,1], [-1,0], [0,-1] """
+        """ 
+        Moves the animal n steps with direction direc, keepeing the
+        animal within the environment.
+        
+        Parameters
+        ----------
+        n: integer.
+        number of steps.
+        direc: np.array 
+        with values [1,0], [0,1], [-1,0] or [0,-1], like NSEW.
+        env_w and env_h: integers.
+        width and height of the environment.
+        """
         res_pos = self.position + self.step*n*dire[direc]
         
-        """es tan solo (x + delta )%size
+        es tan solo (x + delta )%size
 
 
 
@@ -59,7 +71,7 @@ class Animal (object):
             else:
                 res_pos[direc%2] = r desde e
         
-        self.position = res_pos"""
+        self.position = res_pos
         
     def move_rnd (self, n_random, direction, env_w, env_h):
         """ direction == [1,0], [0,1], [-1,0], [0,-1] 
