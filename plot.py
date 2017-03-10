@@ -17,10 +17,9 @@ y_pos = []  #Y position;
 N = 0
 
 #Plots a frame.
-pp.figure()
-#pp.axis([0, 50, 0, 50])
-#pp.hold(False)
+#pp.ion()
 
+fig = 0
 #Loads data from file to lists.
 for line in datos_plot:
 	if line != "\n":
@@ -30,29 +29,23 @@ for line in datos_plot:
 		y_pos.append(line.split("\t")[3])
 		N+=1
 	else:
+		pp.figure()
 		pp.axis([0, 50, 0, 50])
 		for i in range(N):
 			if spc_id[i] == 0: #Si la especie es gacela.
 				pp.plot(x_pos[i], y_pos[i], 'b^') #Gacelas en azul.
 			else:
 				pp.plot(x_pos[i], y_pos[i], 'r*') #Leones en rojo.
-		pp.show()
-		#time.sleep(0.5)
-
+		fig_name = "plot%d.jpg" % fig
+		fig+=1
+		pp.savefig(fig_name)
+		
+		spc_id[:] = [] #
+		idv_id[:] = [] #
+		x_pos[:] = []  #
+		y_pos[:] = []  #
+		N = 0
+		
 #Closes file.
 datos_plot.close()
-
-"""#Plots a frame.
-pp.figure()
-pp.axis([0, 50, 0, 50])
-
-for i in range(N):
-	if spc_id[i] == 0: #Si la especie es gacela.
-		pp.plot(x_pos[i], y_pos[i], 'b^') #Gacelas en azul.
-	else:
-		pp.plot(x_pos[i], y_pos[i], 'r*') #Leones en rojo.
-
-pp.show()"""
-
-
 
