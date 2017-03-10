@@ -54,23 +54,38 @@ class Animal (object):
         """
         res_pos = self.position + self.step*n*dire[direc]
         
-        es tan solo (x + delta )%size
+        #es tan solo (x + delta )%size
 
-
-
-        if res_pos[0] < 0 or res_pos[0] > env_h or \
-            res_pos[1] < 0 or res_pos[1] > env_h:
-
-            if direc % 2 == 0:  env_size = env_w
-            else:               env_size = env_h
-            
-            (q, r)  = divmod(res_pos[direc%2], env_size)
-            delta   = wall - x - r
-            if q % 2 == 1:
-                res_pos[direc%2] = r desde el opuesto
-            else:
-                res_pos[direc%2] = r desde e
+#        if res_pos[0] < 0 or res_pos[0] > env_h or \
+#            res_pos[1] < 0 or res_pos[1] > env_h:
+#
+#            if direc % 2 == 0:  env_size = env_w
+#            else:               env_size = env_h
+            #
+#            (q, r)  = divmod(res_pos[direc%2], env_size)
+#            delta   = wall - x - r
+#            if q % 2 == 1:
+#                res_pos[direc%2] = r desde el opuesto
+#            else:
+#                res_pos[direc%2] = r desde e
+        self.position = res_pos
+   
+    def move_2 (self, n, direc, env_w, env_h):
+        """ direction == [1,0], [0,1], [-1,0], [0,-1] """
+        res_pos = self.position + self.step*n*direc
         
+
+        if (res_pos[0] < 0) or (res_pos[0] > env_w):
+		if res_pos[0]<0:
+			res_pos[0] = -res_pos[0]
+		else:
+			res_pos[0] = 2*env_w - res_pos[0] 
+
+        if (res_pos[1] < 0) or (res_pos[1] > env_h):            
+        	if res_pos[1]<0:
+                res_pos[1] = -res_pos[1]
+		else:
+			res_pos[1] = 2*env_h - res_pos[1] 
         self.position = res_pos
         
     def move_rnd (self, n_random, direction, env_w, env_h):
