@@ -42,7 +42,7 @@ class Animal (object):
         """ direction == [1,0], [0,1], [-1,0], [0,-1] """
         res_pos = self.position + self.step*n*dire[direc]
         
-        es tan solo (x + delta )%size
+        """es tan solo (x + delta )%size
 
 
 
@@ -59,7 +59,7 @@ class Animal (object):
             else:
                 res_pos[direc%2] = r desde e
         
-        self.position = res_pos
+        self.position = res_pos"""
         
     def move_rnd (self, n_random, direction, env_w, env_h):
         """ direction == [1,0], [0,1], [-1,0], [0,-1] 

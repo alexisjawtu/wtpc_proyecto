@@ -3,7 +3,7 @@ from animal import *
 
 class Gazelle (Animal):
     
-    def __init__ (self, position, alive = True):
-        """TODO do not fix step nor hunger"""
-        Animal.__init__(self, position, 3, 30, alive)
+    def __init__ (self, position, step = 1, hunger = 50, alive = True):
+        """ Gazelle is, basically, an animal"""
+        Animal.__init__(self, position, step, hunger, alive)
 

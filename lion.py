@@ -3,8 +3,9 @@ from animal import *
 
 class Lion (Animal):
     
-    def __init__ (self, position, radius, attack_prob, \
+    def __init__ (self, position, step = 1, hunger = 50, radius = 1, attack_prob=0.8, \
         targets = np.array([], dtype = int), alive = True):
+
         """ attack_prob must be a uniform random number in (.5,1)
             targets is an 1D np.array. To operate, consider proper transposings
             after concatenation.
@@ -12,7 +13,7 @@ class Lion (Animal):
             radius == the radius of the attack region of the Lion
 
          """
-        Animal.__init__ (self, position, 2, 80, alive)
+        Animal.__init__ (self, position, step, hunger, alive)
         self.radius      = radius
         self.attack_prob = attack_prob
         self.targets     = targets

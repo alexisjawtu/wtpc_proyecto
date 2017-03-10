@@ -32,11 +32,11 @@ lions = []
 gazelles = []
 for p in range(num_lion):
 	PosL = np.array([np.random.randint(width),np.random.randint(height)])
-	lions.append(Lion(PosL, radLion, probAt))
+	lions.append(Lion(PosL, stepLion, hungerLion, radLion, probAt))
 
 for p in range(num_gazelle):
 	PosGaz = np.array([np.random.randint(width),np.random.randint(height)])
-	gazelles.append(Gazelle(PosGaz))
+	gazelles.append(Gazelle(PosGaz, stepGazelle, hungerGaz))
 
 #def random_direction():
 #    dire = np.array([[1,0],[0,1],[-1,0],[0,-1]])
