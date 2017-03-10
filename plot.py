@@ -15,11 +15,9 @@ y_pos = []  #Y position;
 
 #Animals amount.
 N = 0
-
-#Plots a frame.
-#pp.ion()
-
+#Frame number.
 fig = 0
+
 #Loads data from file to lists.
 for line in datos_plot:
 	if line != "\n":
@@ -29,21 +27,26 @@ for line in datos_plot:
 		y_pos.append(line.split("\t")[3])
 		N+=1
 	else:
+		#Creates a frame and axis.
 		pp.figure()
 		pp.axis([0, 50, 0, 50])
+
 		for i in range(N):
-			if spc_id[i] == 0: #Si la especie es gacela.
-				pp.plot(x_pos[i], y_pos[i], 'b^') #Gacelas en azul.
+			if spc_id[i] == 0: #If species is gazelle.
+				pp.plot(x_pos[i], y_pos[i], 'b^') #Blue for gazelles.
 			else:
-				pp.plot(x_pos[i], y_pos[i], 'r*') #Leones en rojo.
+				pp.plot(x_pos[i], y_pos[i], 'r*') #Red for lions.
+
+		#Defines the file name for the frame and saves it.
 		fig_name = "plot%d.jpg" % fig
-		fig+=1
 		pp.savefig(fig_name)
-		
-		spc_id[:] = [] #
-		idv_id[:] = [] #
-		x_pos[:] = []  #
-		y_pos[:] = []  #
+		fig+=1
+
+		#Clears all list to load the next frame.
+		spc_id[:] = []
+		idv_id[:] = []
+		x_pos[:] = []
+		y_pos[:] = []
 		N = 0
 		
 #Closes file.
