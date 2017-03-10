@@ -13,9 +13,12 @@ class Lion (Animal):
             radius == the radius of the attack region of the Lion
 
          """
-        Animal.__init__ (self, position, step, hunger, alive)
-        self.radius      = radius
-        self.attack_prob = attack_prob
+	stepL = step + np.random.randint(-1,1)
+	hungerL = np.random.normal(hunger,3)
+        
+	Animal.__init__ (self, position, stepL, hunger, alive)
+        self.radius      = int (np.random.normal(radius,0.3))
+        self.attack_prob = np.random.normal(attack_prob,0.03)
         self.targets     = targets
 
     def set_radius (self, rad):

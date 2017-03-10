@@ -75,7 +75,7 @@ class Animal (object):
         res_pos = self.position + self.step*n*direc
         
 
-        if (res_pos[0] < 0) or (res_pos[0] > env_w):
+	if (res_pos[0] < 0) or (res_pos[0] > env_w):
 		if res_pos[0]<0:
 			res_pos[0] = -res_pos[0]
 		else:
@@ -83,7 +83,7 @@ class Animal (object):
 
         if (res_pos[1] < 0) or (res_pos[1] > env_h):            
         	if res_pos[1]<0:
-                res_pos[1] = -res_pos[1]
+               		res_pos[1] = -res_pos[1]
 		else:
 			res_pos[1] = 2*env_h - res_pos[1] 
         self.position = res_pos

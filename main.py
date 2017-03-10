@@ -21,19 +21,20 @@ num_gazelle = 150
 
 #Lion parameters
  
-stepLion = 3
+stepLion = 20
 hungerLion = 0
 radLion = 4
 probAt = 0.6
 
 # Gazzelle parameters
 
-stepGazelle = 4
+stepGazelle = 30
 hungerGaz = 0
+prob_rep = 0.05
 
 #Initialize Lions and Gazelle
  
-gazelles = env.herd_gazelle(num_gazelle, stepGazelle, hungerGaz)
+gazelles = env.herd_gazelle(num_gazelle, stepGazelle, hungerGaz, prob_rep)
 lions =	env.herd_lion(num_lion, stepLion, hungerLion, radLion, probAt)
 
 
@@ -59,11 +60,15 @@ with open (f_name, "w") as out:
             lion.move_2(1, random_direction(), x_m, y_m)
             lions_out[k] = np.concatenate((np.array([1,k]),lion.get_position())) 
 
-        for j,gaz in enumerate(gazelles):
-            gaz.move_2(1, random_direction(), x_m, y_m)
-            if gaz.get_alive():
-                gaz_out.append([0,j]+gaz.get_position().tolist())
-        
+	pups = []
+        for j, gaz in enumerate(gazelles):
+		if gaz.get_alive():
+			list_repro = gaz.get_repro()
+			for desc in list_repro:
+				gaz.reproduction(pups, gaz.get_position(), stepGazelle, hungerGaz)
+			gaz.move_2(1, random_direction(), x_m, y_m)
+			gaz_out.append([0,j]+gaz.get_position().tolist())
+        gazelles = gazelles + pups
         t = t+1
         np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
         np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
