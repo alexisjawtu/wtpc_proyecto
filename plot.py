@@ -1,11 +1,7 @@
-import time
-import numpy as np
-import scipy
 import matplotlib.pyplot as pp
-from pylab import *
 
 #Opens file containing data to plot.
-datos_plot = open('prueba_plot.txt')
+datos_plot = open('log.txt')
 
 #Creates lists to read file elements
 spc_id = [] #Species ID;
@@ -30,22 +26,22 @@ for line in datos_plot:
 		N+=1
 	else:
 		pp.figure()
-		pp.axis([0, 50, 0, 50])
+		pp.axis([0, 200, 0, 125])
 		for i in range(N):
 			if spc_id[i] == 0: #Si la especie es gacela.
-				pp.plot(x_pos[i], y_pos[i], 'b^') #Gacelas en azul.
+				pp.scatter(x_pos[i], y_pos[i]) #Gacelas en azul.
 			else:
 				pp.plot(x_pos[i], y_pos[i], 'r*') #Leones en rojo.
-		fig_name = "plot%d.jpg" % fig
+		fig_name = "plot%d.png" % fig
 		fig+=1
-		pp.savefig(fig_name)
+		pp.savefig(fig_name, format='png')
 		
 		spc_id[:] = [] #
 		idv_id[:] = [] #
 		x_pos[:] = []  #
 		y_pos[:] = []  #
 		N = 0
-		
+	pp.close()
 #Closes file.
 datos_plot.close()
 

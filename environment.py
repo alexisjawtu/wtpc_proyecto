@@ -4,7 +4,7 @@ from gazelle import Gazelle
 
 class Environment(object):
     """TODO: documentation"""
-    def __init__ (self, width, height ):
+    def __init__ (self, width, height):
         self.width = width
         self.height = height
         
@@ -17,8 +17,8 @@ class Environment(object):
     def set_width(self,width):
         self.width = width
         
-    def set_height(self, heigth):
-        self.width = heigth    
+    def set_height(self, height):
+        self.height = height    
         
 
     def gazelle_COM(self, gazelles):
@@ -54,7 +54,7 @@ class Environment(object):
 		lions = []
 		for p in range(num_lion):
 			x = np.random.randint(int(self.width*0.5),self.width)
-			y = np.random.randint(int(0.5*self.width))
+			y = np.random.randint(int(0.5*self.height))
 			PosL = np.array([x, y])
 			
 			stepL = stepLion + np.random.randint(-1,1)
@@ -69,7 +69,7 @@ class Environment(object):
 		gazelles = []
 		for p in range(num_gaz):
 			x = np.random.randint(int(self.width*0.5))
-			y = np.random.randint(int(0.5*self.width),self.width)
+			y = np.random.randint(int(0.5*self.height),self.height)
 			PosGaz = np.array([x, y])
 			hungerG = np.random.normal(hungerG,3)
 			gazelles.append(Gazelle(PosGaz, gazelle_mass, stepG, hungerG))

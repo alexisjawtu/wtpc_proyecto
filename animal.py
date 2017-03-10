@@ -62,8 +62,8 @@ class Animal (object):
         width and height of the environment.
         """
         res_pos         = self.position + self.step*n*dire[direc]
-        res_pos[0]      = env_h - (res_pos[0] % env_h)
-        res_pos[1]      = env_w - (res_pos[1] % env_w)
+        res_pos[1]      = env_h - (res_pos[0] % env_h)
+        res_pos[0]      = env_w - (res_pos[1] % env_w)
         self.position   = res_pos
   
 #    def move_2 (self, n, direc, env_w, env_h):

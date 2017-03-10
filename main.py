@@ -10,11 +10,11 @@ def random_direction():
 
 #Enviroment
 width   = 200
-height  = 200
+height  = 125
 env     = Environment(width,height)
 #Lions and gazelles
-num_lion    = 10
-num_gazelle = 150
+num_lion    = 2
+num_gazelle = 5
 #Lion parameters
 step_lion     = 3
 hunger_lion   = 0
@@ -36,18 +36,16 @@ lions =	env.herd_lion(num_lion, step_lion, hunger_lion, rad_lion, prob_at)
 f_name = 'log.txt'
 
 t = 0
-T = 500
+T = 10
+
+x_m = env.get_width()
+y_m = env.get_height()
 
 with open (f_name, "w") as out:
     while t < T:
         env.map_positions(lions, gazelles)
-        
         lions_out = np.zeros((num_lion,4))
         gaz_out = []
-        
-	x_m = env.get_width()
-	y_m = env.get_height()
-        
         for k, lion in enumerate(lions):
             if not lion.is_idle():
                 lion.set_hunger(lion.get_hunger() + hunger_delta)
@@ -60,15 +58,15 @@ with open (f_name, "w") as out:
             else:
                 lion.decr_sleep_timer()
 
-            lion.move_rnd(np.random.randint(4), x_m, y_m)
+            lion.move(1,np.random.randint(4), x_m, y_m)
             lions_out[k] = np.concatenate((np.array([1,k]), lion.get_position()))
 
         for j,gaz in enumerate(gazelles):
-            gaz.move_rnd(np.random.randint(4), x_m, y_m)
+            gaz.move(1,np.random.randint(4), x_m, y_m)
             if gaz.get_alive():
                 gaz_out.append([0,j]+gaz.get_position().tolist())
         
         t = t+1
         np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
         np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
-        out.write("\n\n")
+        out.write("\n")
