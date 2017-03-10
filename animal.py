@@ -5,12 +5,11 @@ dire = np.array([[1,0],[0,1],[-1,0],[0,-1]])
 
 class Animal (object):
     """Animal(pos) -> new living animal standing at position pos."""
-    def __init__ (self, position, step, hunger, hunger_tol, is_full, alive = True):
+    def __init__ (self, position, step, hunger, hunger_tol, alive = True):
         """ np.array[2] position,
             integer step
             integer hunger, between 1 and 100 and
             integer hunger, between 1 and 100 and
-            boolean is_full: true if and only if the animal eat during the previous iteration.
             boolean set_alive"""
         self.position   = position
         self.step       = step
@@ -36,11 +35,11 @@ class Animal (object):
     def get_hunger (self):
         return self.hunger
 
-    def set_is_full (self, is_full):
-        self.is_full = is_full
+    def set_ate_now (self, ate_now):
+        self.ate_now = ate_now
 
-    def get_is_full (self):
-        return self.is_full
+    def get_ate_now (self):
+        return self.ate_now
 
     def set_alive (self, alive):
         self.alive = alive
@@ -83,12 +82,21 @@ class Animal (object):
 #			res_pos[1] = 2*env_h - res_pos[1] 
 #        self.position = res_pos
         
-    def move_rnd (self, n_random, direction, env_w, env_h):
-        """ direction == [1,0], [0,1], [-1,0], [0,-1] 
-            TODO: si sobra rebota con tamano de environment
+    def move_rnd (self, direction, env_w, env_h):
+        """ 
+        Moves the animal a random number n of steps with direction direc,
+        keepeing the animal within the environment.
+        
+        Parameters
+        ----------
+        direction: np.array 
+        with values [1,0], [0,1], [-1,0] or [0,-1], like NSEW.
+        env_w and env_h: integers.
+        width and height of the environment.
         """
-        self.position += self.step*n_random*direction
+        n_random = np.random.randint(11)
+        self.move(n_random, direction, env_w, env_h)
 
     def eat (self, food):
         self.hunger     = min (self.hunger - food, 0)
-        self.is_full    = True        
+        self.ate_now    = True        
