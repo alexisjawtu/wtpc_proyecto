@@ -30,8 +30,7 @@ class Environment(object):
         vec_pos = vec_pos.reshape(len(gazelles)/2,2).transpose()
        
         return np.floor(np.average(vec_pos,axis=0))
-   
-      
+  
     def map_positions(self, lions, gazelles):
         """DOCUMENTAR """
         area = [0]*4
@@ -66,16 +65,14 @@ class Environment(object):
 			lions.append(Lion(PosL, stepL, hungerL, radL, probL))
 		return lions
 
-    def herd_gazelle(self, num_gaz, stepGaz, hungerGaz):
+    def herd_gazelle(self, num_gaz, gazelle_mass, stepG, hungerG):
 		gazelles = []
 		for p in range(num_gaz):
 			x = np.random.randint(int(self.width*0.5))
 			y = np.random.randint(int(0.5*self.width),self.width)
 			PosGaz = np.array([x, y])
-
-			stepG = stepGaz 
-			hungerG = np.random.normal(hungerGaz,3)
-			gazelles.append(Gazelle(PosGaz, stepG, hungerG))
+			hungerG = np.random.normal(hungerG,3)
+			gazelles.append(Gazelle(PosGaz, gazelle_mass, stepG, hungerG))
 		return gazelles
                     
 

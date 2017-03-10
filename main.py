@@ -1,6 +1,6 @@
 import numpy as np
 
-from  environment import Environment
+from environment import Environment
 from lion import Lion
 from gazelle import Gazelle
 
@@ -10,31 +10,31 @@ def random_direction():
 
 #Enviroment
 
-width = 200
-height= 200
-env = Environment(width,height)
+width   = 200
+height  = 200
+env     = Environment(width,height)
 
 #Lions and gazelles
 
-num_lion = 50
+num_lion    = 10
 num_gazelle = 150
 
 #Lion parameters
  
-stepLion = 3
-hungerLion = 0
-radLion = 4
-probAt = 0.6
+step_lion     = 3
+hunger_lion   = 0
+rad_lion      = 4
+prob_at       = 0.6
+hunger_delta = 3
 
 # Gazzelle parameters
-
-stepGazelle = 4
-hungerGaz = 0
-
+step_gazelle     = 4
+hunger_gaz       = 0
+gazelle_mass    = 25
 #Initialize Lions and Gazelle
  
-gazelles = env.herd_gazelle(num_gazelle, stepGazelle, hungerGaz)
-lions =	env.herd_lion(num_lion, stepLion, hungerLion, radLion, probAt)
+gazelles = env.herd_gazelle(num_gazelle, gazelle_mass, step_gazelle, hunger_gaz)
+lions =	env.herd_lion(num_lion, step_lion, hunger_lion, rad_lion, prob_at)
 
 
 #Time Loop
@@ -53,11 +53,14 @@ with open (f_name, "w") as out:
 	y_m = env.get_height()
         
         for k, lion in enumerate(lions):
+            if not lion.get_is_full():
+                lion.set_hunger(lion.get_hunger() + hunger_delta)
             list_target = lion.get_targets()
             for target in list_target:
-                lion.attack(gazelles[target])
+                if lion.is_hungry():
+                    lion.attack(gazelles[target])
             lion.move(1, np.random.randint(4), x_m, y_m)
-            lions_out[k] = np.concatenate((np.array([1,k]),lion.get_position())) 
+            lions_out[k] = np.concatenate((np.array([1,k]), lion.get_position())) 
 
         for j,gaz in enumerate(gazelles):
             gaz.move(1, np.random.randint(4), x_m, y_m)
@@ -68,4 +71,3 @@ with open (f_name, "w") as out:
         np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
         np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
         out.write("\n\n")
-        

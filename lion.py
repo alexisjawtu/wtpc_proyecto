@@ -3,9 +3,8 @@ from animal import *
 
 class Lion (Animal):
     
-    def __init__ (self, position, step = 1, hunger = 50, radius = 1, attack_prob=0.8, \
+    def __init__ (self, position, step = 1, hunger = 50, hunger_tol = 20, radius = 1, attack_prob=0.8, \
         targets = np.array([], dtype = int), alive = True):
-
         """ attack_prob must be a uniform random number in (.5,1)
             targets is an 1D np.array. To operate, consider proper transposings
             after concatenation.
@@ -13,7 +12,7 @@ class Lion (Animal):
             radius == the radius of the attack region of the Lion
 
          """
-        Animal.__init__ (self, position, step, hunger, alive)
+        Animal.__init__ (self, position, step, hunger, hunger_tol, alive)
         self.radius      = radius
         self.attack_prob = attack_prob
         self.targets     = targets
@@ -38,6 +37,13 @@ class Lion (Animal):
 
     def add_target (self, index):
         self.targets = np.concatenate((self.targets, [index]))
+
+    def is_hungry (self):
+        """ Returns whether the lion is hungry. Makes a comparison between
+        Lion.hunger and Lion.hunger_tol. """
+        if self.hunger > self.hunger_tol:   hunger = True
+        else:                               hunger = False
+        return hunger
 
     def attack (self, g):
         """ takes the gazelle and kills and occupies its position
