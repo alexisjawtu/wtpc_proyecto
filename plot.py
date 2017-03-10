@@ -1,11 +1,10 @@
-import time
 import numpy as np
 import scipy
 import matplotlib.pyplot as pp
 from pylab import *
 
 #Opens file containing data to plot.
-datos_plot = open('prueba_plot.txt')
+datos_plot = open('log.txt')
 
 #Creates lists to read file elements
 spc_id = [] #Species ID;
