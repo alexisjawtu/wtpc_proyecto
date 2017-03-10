@@ -75,7 +75,7 @@ class Lion (Animal):
     def eat (self, food):
         """ override method Animal.eat() """
         self.hunger      = min (self.hunger - food, 0)
-        self.sleep_timer = idle
+        self.sleep_timer = self.idle
 
     def is_idle (self):
         return (self.sleep_timer > 0)

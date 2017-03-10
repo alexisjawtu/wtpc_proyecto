@@ -60,11 +60,11 @@ with open (f_name, "w") as out:
             else:
                 lion.decr_sleep_timer()
 
-            lion.move_rnd(np.random.randint(3), np.random.randint(4), x_m, y_m)
+            lion.move_rnd(np.random.randint(4), x_m, y_m)
             lions_out[k] = np.concatenate((np.array([1,k]), lion.get_position()))
 
         for j,gaz in enumerate(gazelles):
-            gaz.move_rnd(np.random.randint(3), np.random.randint(4), x_m, y_m)
+            gaz.move_rnd(np.random.randint(4), x_m, y_m)
             if gaz.get_alive():
                 gaz_out.append([0,j]+gaz.get_position().tolist())
         

@@ -94,7 +94,7 @@ class Animal (object):
         env_w and env_h: integers.
         width and height of the environment.
         """
-        n_random = np.random.randint(11)
+        n_random = np.random.randint(3)
         self.move(n_random, direction, env_w, env_h)
 
     def eat (self, food):

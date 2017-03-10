@@ -9,5 +9,5 @@ class Gazelle (Animal):
             integer step,
             integer hunger, between 1 and 100
             boolean alive. """
-        Animal.__init__(self, position, step, hunger, alive)
-        self.gazelle_mass = gazelle_mass
+		Animal.__init__(self, position, step, hunger, alive)
+		self.gazelle_mass = gazelle_mass

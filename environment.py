@@ -59,7 +59,7 @@ class Environment(object):
 			
 			stepL = stepLion + np.random.randint(-1,1)
 			hungerL = np.random.normal(hungerLion,3)
-			radL = int (np.random.normal(radLion,0.3))
+			radL = int(np.random.normal(radLion,0.3))
 			probL = np.random.normal(probAt,0.03)
 
 			lions.append(Lion(PosL, stepL, hungerL, radL, probL))
