@@ -3,13 +3,12 @@ import numpy as np
 dire = np.array([[1,0],[0,1],[-1,0],[0,-1]])
 
 class Animal (object):
-    """ documentation here please """
+    """Animal(pos) -> new living animal standing at position pos."""
     def __init__ (self, position, step = 1, hunger = 50, alive = True):
-        """ position is np.array[2] 
-            step is integer
-            hunger is integer between 1 and 100
-            alive is True or False
-        """
+        """ np.array[2] position, 
+            integer step
+            integer hunger, between 1 and 100 and
+            boolean set_alive"""
         self.position   = position
         self.step       = step
         self.hunger     = hunger
