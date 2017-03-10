@@ -26,9 +26,7 @@ class Environment(object):
         vec_pos=np.array([])
         for g in gazelles:
             vec_pos = np.concatenate((vec_pos, g.position))
-        
         vec_pos = vec_pos.reshape(len(gazelles)/2,2).transpose()
-       
         return np.floor(np.average(vec_pos,axis=0))
   
     def map_positions(self, lions, gazelles):
@@ -48,32 +46,30 @@ class Environment(object):
                 p[1] >= area[2] and p[1] <= area[3]:
                     """TODO: obtimizar con distancia 1"""
                     l.add_target(k)
-
     
     def herd_lion(self, num_lion, stepLion, hungerLion, radLion, probAt):
-		lions = []
-		for p in range(num_lion):
-			x = np.random.randint(int(self.width*0.5),self.width)
-			y = np.random.randint(int(0.5*self.height))
-			PosL = np.array([x, y])
-			
-			stepL = stepLion + np.random.randint(-1,1)
-			hungerL = np.random.normal(hungerLion,3)
-			radL = int(np.random.normal(radLion,0.3))
-			probL = np.random.normal(probAt,0.03)
+        lions = []
+        for p in range(num_lion):
+            x = np.random.randint(int(self.width*0.25),int(self.width*0.75))
+            y = np.random.randint(int(self.height*0.25),int(self.height*0.75))
+            PosL = np.array([x, y])
+            
+            stepL = stepLion + np.random.randint(-1,1)
+            hungerL = np.random.normal(hungerLion,3)
+            radL = int(np.random.normal(radLion,3))
+            probL = max(np.random.normal(probAt,0.03),1)
 
-			lions.append(Lion(PosL, stepL, hungerL, radL, probL))
-		return lions
+            lions.append(Lion(PosL, stepL, hungerL, radL, probL))
+        return lions
+
+
 
     def herd_gazelle(self, num_gaz, gazelle_mass, stepG, hungerG):
-		gazelles = []
-		for p in range(num_gaz):
-			x = np.random.randint(int(self.width*0.5))
-			y = np.random.randint(int(0.5*self.height),self.height)
-			PosGaz = np.array([x, y])
-			hungerG = np.random.normal(hungerG,3)
-			gazelles.append(Gazelle(PosGaz, gazelle_mass, stepG, hungerG))
-		return gazelles
-                    
-
-
+        gazelles = []
+        for p in range(num_gaz):
+            x = np.random.randint(int(self.width*0.125),int(self.width*0.625))
+            y = np.random.randint(int(self.height*0.375),int(self.height*0.875))
+            PosGaz = np.array([x, y])
+            hungerG = np.random.normal(hungerG,3)
+            gazelles.append(Gazelle(PosGaz, gazelle_mass, stepG, hungerG))
+        return gazelles

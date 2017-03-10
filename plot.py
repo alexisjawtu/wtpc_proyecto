@@ -26,12 +26,12 @@ for line in datos_plot:
 		N+=1
 	else:
 		pp.figure()
-		pp.axis([0, 200, 0, 125])
+		pp.axis([0, 600, 0, 123])
 		for i in range(N):
 			if spc_id[i] == 0: #Si la especie es gacela.
 				pp.scatter(x_pos[i], y_pos[i]) #Gacelas en azul.
 			else:
-				pp.plot(x_pos[i], y_pos[i], 'r*') #Leones en rojo.
+				pp.scatter(x_pos[i], y_pos[i], color='red') #Leones en rojo.
 		fig_name = "plot%d.png" % fig
 		fig+=1
 		pp.savefig(fig_name, format='png')

@@ -62,25 +62,25 @@ class Animal (object):
         width and height of the environment.
         """
         res_pos         = self.position + self.step*n*dire[direc]
-        res_pos[1]      = env_h - (res_pos[0] % env_h)
-        res_pos[0]      = env_w - (res_pos[1] % env_w)
+        res_pos[1]      = env_h - (res_pos[1] % env_h)
+        res_pos[0]      = env_w - (res_pos[0] % env_w)
         self.position   = res_pos
   
-#    def move_2 (self, n, direc, env_w, env_h):
-#        """ direction == [1,0], [0,1], [-1,0], [0,-1] """
-#        res_pos = self.position + self.step*n*direc
-#
-#        if (res_pos[0] < 0) or (res_pos[0] > env_w):
-#    		if res_pos[0]<0:
-#    			res_pos[0] = -res_pos[0]
-#		else:
-#			res_pos[0] = 2*env_w - res_pos[0]
-#        if (res_pos[1] < 0) or (res_pos[1] > env_h):
-#            if res_pos[1]<0:
-#                res_pos[1] = -res_pos[1]
-#		else:
-#			res_pos[1] = 2*env_h - res_pos[1] 
-#        self.position = res_pos
+    def move_2 (self, n, direc, env_w, env_h):
+        """ direction == [1,0], [0,1], [-1,0], [0,-1] """
+        res_pos = self.position + self.step*n*dire[direc]
+
+        if (res_pos[0] < 0) or (res_pos[0] > env_w):
+    		if res_pos[0]<0:
+    			res_pos[0] = -res_pos[0]
+    		else:
+    			res_pos[0] = 2*env_w - res_pos[0]
+        if (res_pos[1] < 0) or (res_pos[1] > env_h):
+            if res_pos[1]<0:
+                res_pos[1] = -res_pos[1]
+            else:
+    			res_pos[1] = 2*env_h - res_pos[1] 
+        self.position = res_pos
         
     def move_rnd (self, direction, env_w, env_h):
         """ 
