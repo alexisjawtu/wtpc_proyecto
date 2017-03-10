@@ -40,6 +40,7 @@ for line in datos_plot:
 		fig_name = "plot%d.jpg" % fig
 		pp.savefig(fig_name)
 		fig+=1
+		pp.close()
 
 		#Clears all list to load the next frame.
 		spc_id[:] = []
