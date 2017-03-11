@@ -1,6 +1,6 @@
 import matplotlib.pyplot as pp
 
-def plot_frame(x0, y0, x1, y1, file_txt):
+def plot_frame(x0, y0, x1, y1, file_txt, l_count, g_count):
 	#Opens file containing data to plot.
 	datos_plot = file_txt
 	lion_col = 'red'
@@ -29,7 +29,7 @@ def plot_frame(x0, y0, x1, y1, file_txt):
 			pp.figure()
 			pp.xlim(x0-1, x1+1)
 			pp.ylim(y0-1, y1+1)
-			pp.title("Lions: " + lion_col + '. ' + "Gazelles: " + gazelle_col)
+			pp.title("Lions: %s, %d. Gazelles: %s, %d" % (lion_col, l_count[fig], gazelle_col, g_count[fig]))
 
 			for i in range(N):
 				if spc_id[i] == 0: #If species is gazelle.
