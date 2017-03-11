@@ -35,12 +35,6 @@ class Animal (object):
     def get_hunger (self):
         return self.hunger
 
-    def set_ate_now (self, ate_now):
-        self.ate_now = ate_now
-
-    def get_ate_now (self):
-        return self.ate_now
-
     def set_alive (self, alive):
         self.alive = alive
 
@@ -98,5 +92,4 @@ class Animal (object):
         self.move(n_random, direction, env_w, env_h)
 
     def eat (self, food):
-        self.hunger     = min (self.hunger - food, 0)
-        self.ate_now    = True        
+        self.hunger     = max (self.hunger - food, 0)

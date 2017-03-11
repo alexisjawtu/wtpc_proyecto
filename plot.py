@@ -26,8 +26,8 @@ def plot_frame(x0, y0, x1, y1, file_txt):
 		else:
 			#Creates a frame and axis.
 			pp.figure()
-			pp.xlim(x0-0.5, x1+0.5)
-			pp.ylim(y0-0.5, y1+0.5)
+			pp.xlim(x0-1, x1+1)
+			pp.ylim(y0-1, y1+1)
 
 			for i in range(N):
 				if spc_id[i] == 0: #If species is gazelle.
@@ -36,7 +36,7 @@ def plot_frame(x0, y0, x1, y1, file_txt):
 					pp.scatter(x_pos[i], y_pos[i], color = 'red') #Red for lions.
 
 			#Defines the file name for the frame and saves it.
-			fig_name = "plot%d" % fig
+			fig_name = "plot%d.png" % fig
 			pp.savefig(fig_name, format='png')
 			fig+=1
 			pp.close()

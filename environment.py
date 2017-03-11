@@ -42,9 +42,9 @@ class Environment(object):
             
             for k, g in enumerate(gazelles):
                 p = g.get_position()
-                if p[0] >= area[0] and p[0] <= area[1] and \
-                p[1] >= area[2] and p[1] <= area[3]:
-                    """TODO: obtimizar con distancia 1"""
+                if g.get_alive() and (p[0] >= area[0]) and (p[0] <= area[1]) and \
+                (p[1] >= area[2]) and (p[1] <= area[3]):
+                    """TODO: optimizar con distancia 1"""
                     l.add_target(k)
     
     def herd_lion(self, num_lion, stepLion, hungerLion, radLion, probAt):

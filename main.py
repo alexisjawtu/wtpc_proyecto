@@ -10,23 +10,23 @@ def random_direction():
     return dire[np.random.randint(4)]
 
 #Enviroment
-width   = 30
+width   = 600
 height  = int(width/1.618)
 env     = Environment(width,height)
 #Lions and gazelles
 num_lion    = 15
-num_gazelle = 10
+num_gazelle = 200
 #Lion parameters
 step_lion     = 3
 hunger_lion   = 50
 rad_lion      = 3
-prob_at       = 1
-hunger_delta  = 10
-sleep         = 0 
+prob_at       = .8
+hunger_delta  = 4
+sleep         = 4 
 # Gazzelle parameters
 step_gazelle  = 4
 hunger_gaz    = 0
-gazelle_mass  = 2
+gazelle_mass  = 8
 #Initialize Lions and Gazelle
  
 gazelles = env.herd_gazelle(num_gazelle, gazelle_mass, step_gazelle, hunger_gaz)
@@ -53,7 +53,7 @@ with open (f_name, "w") as out:
                 lion.set_hunger(lion.get_hunger() + hunger_delta)
                 list_target = lion.get_targets()
                 for target in list_target:
-                    if lion.is_hungry():
+                    if gazelles[target].get_alive() and lion.is_hungry():
                         lion.attack(gazelles[target])
             else:
                 lion.decr_sleep_timer()
@@ -63,10 +63,10 @@ with open (f_name, "w") as out:
             if gaz.get_alive():
                 gaz_out.append([0,j]+gaz.get_position().tolist())
             gaz.move_2(1,np.random.randint(4), x_m, y_m)
-        if t%10 == 0:
-            np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
-            np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
-            out.write("\n")
+        #if t%10 == 0:
+        np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
+        np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
+        out.write("\n")
         t = t+1
 file_txt = open("log.txt")
 plot_frame(0, 0, x_m, y_m, file_txt)

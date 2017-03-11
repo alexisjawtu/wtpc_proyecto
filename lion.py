@@ -65,7 +65,7 @@ class Lion (Animal):
     def attack (self, g):
         """ takes the gazelle and kills and occupies its position
             according to the attack_prob """
-        p = np.random.random()
+        p = np.random.random() 
         if (self.attack_prob > p):
             self.set_position(g.position)
             self.eat(g.gazelle_mass) 
