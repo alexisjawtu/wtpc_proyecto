@@ -42,6 +42,9 @@ T = 1000
 x_m = env.get_width()
 y_m = env.get_height()
 
+lion_quant = np.zeros(T)
+gaze_quant = np.zeros(T)
+
 with open (f_name, "w") as out:
     while t < T:
         env.map_positions(lions, gazelles)
@@ -69,4 +72,4 @@ with open (f_name, "w") as out:
         out.write("\n")
         t = t+1
 file_txt = open("log.txt")
-plot_frame(0, 0, x_m, y_m, file_txt)
+plot_frame(0, 0, x_m, y_m, file_txt, lion_quant, gaze_quant)

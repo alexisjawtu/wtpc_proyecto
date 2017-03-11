@@ -3,7 +3,8 @@ import matplotlib.pyplot as pp
 def plot_frame(x0, y0, x1, y1, file_txt):
 	#Opens file containing data to plot.
 	datos_plot = file_txt
-
+	lion_col = 'red'
+	gazelle_col = 'blue'
 	#Creates lists to read file elements
 	spc_id = [] #Species ID;
 	idv_id = [] #Individual ID; 
@@ -28,12 +29,13 @@ def plot_frame(x0, y0, x1, y1, file_txt):
 			pp.figure()
 			pp.xlim(x0-1, x1+1)
 			pp.ylim(y0-1, y1+1)
+			pp.title("Lions: " + lion_col + '. ' + "Gazelles: " + gazelle_col)
 
 			for i in range(N):
 				if spc_id[i] == 0: #If species is gazelle.
-					pp.scatter(x_pos[i], y_pos[i]) #Blue for gazelles.
+					pp.scatter(x_pos[i], y_pos[i], color = gazelle_col) #Blue for gazelles.
 				else:
-					pp.scatter(x_pos[i], y_pos[i], color = 'red') #Red for lions.
+					pp.scatter(x_pos[i], y_pos[i], color = lion_col) #Red for lions.
 
 			#Defines the file name for the frame and saves it.
 			fig_name = "plot%d.png" % fig
