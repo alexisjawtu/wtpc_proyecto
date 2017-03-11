@@ -50,15 +50,12 @@ with open (f_name, "w") as out:
             lions_out[k] = np.concatenate((np.array([1,k]), lion.get_position()))
             if not lion.is_idle():
                 lion.set_hunger(lion.get_hunger() + hunger_delta)
-
                 list_target = lion.get_targets()
                 for target in list_target:
                     if lion.is_hungry():
                         lion.attack(gazelles[target])
-
             else:
                 lion.decr_sleep_timer()
-
             lion.move_2(1,np.random.randint(4), x_m, y_m)
 
         for j,gaz in enumerate(gazelles):
