@@ -1,4 +1,5 @@
 import numpy as np
+from plot import plot_frame
 
 from environment import Environment
 from lion import Lion
@@ -9,23 +10,23 @@ def random_direction():
     return dire[np.random.randint(4)]
 
 #Enviroment
-width   = 600
+width   = 30
 height  = int(width/1.618)
 env     = Environment(width,height)
 #Lions and gazelles
 num_lion    = 15
-num_gazelle = 200
+num_gazelle = 10
 #Lion parameters
-step_lion     = 4
+step_lion     = 3
 hunger_lion   = 50
-rad_lion      = 100
+rad_lion      = 3
 prob_at       = 1
-hunger_delta  = 3
-sleep         = 3 
+hunger_delta  = 10
+sleep         = 0 
 # Gazzelle parameters
-step_gazelle  = 6
+step_gazelle  = 4
 hunger_gaz    = 0
-gazelle_mass  = 8
+gazelle_mass  = 2
 #Initialize Lions and Gazelle
  
 gazelles = env.herd_gazelle(num_gazelle, gazelle_mass, step_gazelle, hunger_gaz)
@@ -67,3 +68,5 @@ with open (f_name, "w") as out:
             np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
             out.write("\n")
         t = t+1
+file_txt = open("log.txt")
+plot_frame(0, 0, x_m, y_m, file_txt)
