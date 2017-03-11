@@ -50,8 +50,8 @@ class Environment(object):
     def herd_lion(self, num_lion, stepLion, hungerLion, radLion, probAt):
         lions = []
         for p in range(num_lion):
-            x = np.random.randint(int(self.width*0.25),int(self.width*0.75))
-            y = np.random.randint(int(self.height*0.25),int(self.height*0.75))
+            x = np.random.randint(int(self.width*0.375),int(self.width*0.625))
+            y = np.random.randint(int(self.height*0.375),int(self.height*0.625))
             PosL = np.array([x, y])
             
             stepL = stepLion + np.random.randint(-1,1)
@@ -62,13 +62,11 @@ class Environment(object):
             lions.append(Lion(PosL, stepL, hungerL, radL, probL))
         return lions
 
-
-
     def herd_gazelle(self, num_gaz, gazelle_mass, stepG, hungerG):
         gazelles = []
         for p in range(num_gaz):
-            x = np.random.randint(int(self.width*0.125),int(self.width*0.625))
-            y = np.random.randint(int(self.height*0.375),int(self.height*0.875))
+            x = np.random.randint(int(self.width*0.125),int(self.width*0.875))
+            y = np.random.randint(int(self.height*0.125),int(self.height*0.875))
             PosGaz = np.array([x, y])
             hungerG = np.random.normal(hungerG,3)
             gazelles.append(Gazelle(PosGaz, gazelle_mass, stepG, hungerG))
