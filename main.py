@@ -68,7 +68,9 @@ with open (f_name, "w") as out:
             gaz.move_2(1,np.random.randint(4), x_m, y_m)
         #if t%10 == 0:
         np.savetxt(out,lions_out,fmt="%d",delimiter='\t')
+        lion_quant[t] = lions_out.shape[0]
         np.savetxt(out,np.array(gaz_out),fmt="%d",delimiter='\t')
+        gaze_quant[t] = len(gaz_out)
         out.write("\n")
         t = t+1
 file_txt = open("log.txt")
